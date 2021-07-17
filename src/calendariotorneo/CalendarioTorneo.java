@@ -11,7 +11,11 @@ import java.util.Arrays;
     @author Frankz
  */
 public class CalendarioTorneo {
-
+static Jornada jornadas[]=new Jornada[8];  
+public static void setJornadaVector(){
+int[][] jornada_1={{0, 1}, {2, 3}, {4, 5}, {6, 7}, {8, 9}, {10, 11}, {12, 13}, {14, 15}};
+jornadas[0].orden_Partidos=jornada_1;
+}
     /**
      * @param args the command line arguments
      */
@@ -31,7 +35,9 @@ public class CalendarioTorneo {
             new Equipo("Aucas"), new Equipo("Manta"), new Equipo("Dep. Cuenta"),
             new Equipo("Tecnico Universitario"), new Equipo("Orense"), new Equipo("Guayaquil City"),
             new Equipo("Olmedo")};
-        int jornada_1[][] = {{0, 1}, {2, 3}, {4, 5}, {6, 7}, {8, 9}, {10, 11}, {12, 13}, {14, 15}};
+ 
+     //   int jornada_1[][] = 
+       
         int jornada_2[][] = {{11, 6}, {13, 2}, {15, 8}, {7, 10}, {1, 14}, {3, 4}, {9, 12}, {5, 0}};
         int jornada_3[][] = {{0, 9}, {7, 11}, {2, 1}, {4, 15}, {6, 15}, {14, 12}, {8, 13}, {10, 3}};
         int jornada_4[][] = {{13, 4}, {15, 6}, {0, 10}, {1, 7}, {3, 5}, {9, 11}, {12, 8}, {14, 2}};
@@ -46,6 +52,12 @@ public class CalendarioTorneo {
         int jornada_13[][] = {{13, 3}, {0, 7}, {1, 10}, {4, 6}, {8, 11}, {9, 2}, {12, 15}, {14, 5}};
         int jornada_14[][] = {{11, 4}, {15, 9}, {7, 13}, {2, 0}, {1, 8}, {3, 12}, {6, 14}, {5, 10}};
         int jornada_15[][] = {{13, 6}, {0, 15}, {4, 7}, {9, 1}, {10, 2}, {12, 11}, {14, 3}, {8, 5}};
+      Jornada jornada_Object= new Jornada();
+      setJornadaVector();
+   for(int i=0;i<8;i++){
+             jornada_Object.match[i]=new Partido(ligaEcuatoriana[jornadas[i].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[i].orden_Partidos[i][1]]);     
+        }
+    System.out.println("holis frankz0  "+jornada_Object.toString());
 
         for (int i = 0; i < tablaPosiciones.length; i++) {
             tablaPosiciones[i][0] = ligaEcuatoriana[i].getNombreEquipo();
