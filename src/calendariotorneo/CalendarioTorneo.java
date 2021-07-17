@@ -59,24 +59,32 @@ public class CalendarioTorneo {
             tablaPosiciones[i][8]= "" + ligaEcuatoriana[i].getPuntos();          
         }                        
     }
-    
-    public void ordenarMatriz(String matriz[][]){
-        for (int i = 1; i < matriz.length; i++) {
-            if(Integer.parseInt(matriz[i-1][8])>Integer.parseInt(matriz[i][8])){
-                
-            }else{
-                
+        public void ordenarMatriz(String matriz[][]) {
+        for (int i = 0; i < matriz.length-1; i++) {
+            for (int j = i+ 1; j < matriz.length; j++) {
+                if (  Integer.parseInt(matriz[i][8])>Integer.parseInt(matriz[j][8])) {
+                         intercambio(i, j, matriz);
+                } 
             }
-            
         }
+
     }
-    
-    public void intercambio(int mayor, int menor, String matriz[][]){
+
+    public void intercambio(int mayor, int menor, String matriz[][]) {
         String aux[] = new String[8];
         for (int i = 0; i < aux.length; i++) {
-            
-            
+            //copio el mayor en aux
+            aux[i] = matriz[mayor][i];
+        }
+        for (int i = 0; i < aux.length; i++) {
+            //pongo el menor en el mayor
+            matriz[mayor][i] = matriz[menor][i];
+        }
+        for (int i = 0; i < aux.length; i++) {
+            //pongo en el menor el aux
+            matriz[menor][i] = aux[i];
         }
     }
+    
     
 }
