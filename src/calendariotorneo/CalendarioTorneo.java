@@ -14,6 +14,7 @@ import java.util.Scanner;
 public class CalendarioTorneo {
 
     static Jornada jornadas[] = new Jornada[15];
+    static String tablaPosiciones[][] = new String[16][9];
 
     public static void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
@@ -74,6 +75,23 @@ public class CalendarioTorneo {
         System.out.println("Ingrese el número de una opción: ");
     }
 
+    public static void encontrarFinalistas(String tablaPosiciones[][], Equipo ligaEcuatoriana[], Equipo finalistas[]) {
+        for (int indice = 0; indice < finalistas.length; indice++) {
+            for (int i = 0; i < ligaEcuatoriana.length; i++) {
+                if (ligaEcuatoriana[i].getNombreEquipo().equals(tablaPosiciones[indice][0])) {
+                    finalistas[indice] = ligaEcuatoriana[i];
+                }
+            }
+        }
+    }
+
+    public static void menu2() {
+        System.out.println("1.- Jugar una Jornada");
+        System.out.println("3.- Jugar todas las jornadas");
+        System.out.println("4.- Salir");
+        System.out.println("Ingrese el número de una opción: ");
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -86,7 +104,7 @@ public class CalendarioTorneo {
         //finalizando la primera fase, el 1er lugar juega contra el 3ro y el 2do contra el 4to
         //de esos 2 encuentros salen las 2 finales
         Scanner teclado = new Scanner(System.in);
-        String tablaPosiciones[][] = new String[16][9];
+
         Equipo ligaEcuatoriana[] = {new Equipo("Barcelona"), new Equipo("Emelec"), new Equipo("Independiente del Valle"),
             new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
@@ -107,16 +125,18 @@ public class CalendarioTorneo {
                     for (int i = 0; i < 8; i++) {
                         Partido partido1 = new Partido(ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][1]]);
                         jornadas[jornada].match[i] = partido1;
-                        partido1.jugarPartido();                      
+                        partido1.jugarPartido();
                         resultado += partido1.resultadoPartido() + "\n";
-                    }                                           
+                    }
                     System.out.println("Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString());
-                    System.out.println("Resultados\n" + resultado + "\n");       
+                    System.out.println("Resultados\n" + resultado + "\n");
                     jornada++;
                     break;
                 case 2:
                     inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
                     ordenarMatriz(tablaPosiciones);
+                    GUITablaPosiciones tabla = new GUITablaPosiciones();
+                    tabla.setVisible(true);
                     System.out.println(imprimirMatriz(tablaPosiciones));
                     break;
                 case 3:
@@ -133,7 +153,7 @@ public class CalendarioTorneo {
                     }
                     break;
                 default:
-                    bandera=false;
+                    bandera = false;
                     break;
             }
 

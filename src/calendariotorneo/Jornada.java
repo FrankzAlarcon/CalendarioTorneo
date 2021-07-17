@@ -10,8 +10,8 @@ package calendariotorneo;
  * @author Jhona
  */
 public class Jornada {
-    Partido[] match;
-    int[][] orden_Partidos;
+   public Partido[] match;
+   public  int[][] orden_Partidos;
 
     public Jornada() {
         this.match = new Partido[8];
