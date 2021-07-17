@@ -10,7 +10,6 @@ package calendariotorneo;
  * @author Jhona
  */
 public class Jornada {
-
     Partido[] match;
     int[][] orden_Partidos;
 
@@ -41,8 +40,9 @@ public class Jornada {
     @Override
     public String toString() {
         String salida = "";
-        for (Partido aux : match) {
-            salida += aux.toString();
+        for (int i = 0; i < match.length; i++) {
+            salida+= match[i].toString();
+            
         }
         return salida;
     }
