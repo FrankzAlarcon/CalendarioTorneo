@@ -31,7 +31,14 @@ public class CalendarioTorneo {
             new Equipo("Emelec"), new Equipo("Independiente del Valle"),
             new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
-            new Equipo("Aucas"), new Equipo("Manta")};
+            new Equipo("Aucas"), new Equipo("Manta"), new Equipo("Dep. Cuenta"),
+            new Equipo("Tecnico Universitario"), new Equipo("Orense"),new Equipo("Guayaquil City"),
+            new Equipo("Olmedo")};
+        for (int i = 0; i < ligaEcuatoriana.length; i++) {
+            
+            
+        }
+        
                 
     }
     
