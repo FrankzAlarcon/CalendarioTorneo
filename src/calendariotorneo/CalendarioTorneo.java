@@ -45,8 +45,23 @@ public class CalendarioTorneo {
         }                        
     }
     
-    public void ordenarMatriz(){
-        
+    public void ordenarMatriz(String matriz[][]){
+        for (int i = 1; i < matriz.length; i++) {
+            if(Integer.parseInt(matriz[i-1][8])>Integer.parseInt(matriz[i][8])){
+                
+            }else{
+                
+            }
+            
+        }
+    }
+    
+    public void intercambio(int mayor, int menor, String matriz[][]){
+        String aux[] = new String[8];
+        for (int i = 0; i < aux.length; i++) {
+            
+            
+        }
     }
     
 }
