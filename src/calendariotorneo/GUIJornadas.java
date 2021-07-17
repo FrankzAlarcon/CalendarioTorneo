@@ -5,46 +5,26 @@
  */
 package calendariotorneo;
 
-import javax.swing.table.DefaultTableModel;
+import static calendariotorneo.CalendarioTorneo.jornadas;
 
 /**
  *
  * @author Frankz
  */
-public class GUITablaPosiciones extends javax.swing.JFrame {
+public class GUIJornadas extends javax.swing.JFrame {
     CalendarioTorneo calendario = new CalendarioTorneo();
-    DefaultTableModel dtmTablaPosiciones;
     /**
-     * Creates new form GUITablaPosiciones
+     * Creates new form GUIJornadas
      */
-    
-    public GUITablaPosiciones() {
+    public GUIJornadas() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
         this.setVisible(false);
-        dtmTablaPosiciones = new DefaultTableModel();
-        crearColumnas();
-        for (int i = 0; i < calendario.tablaPosiciones.length; i++) {
-            dtmTablaPosiciones.addRow(new Object[]{calendario.tablaPosiciones[i][0],
-            calendario.tablaPosiciones[i][1],calendario.tablaPosiciones[i][2],
-            calendario.tablaPosiciones[i][3],calendario.tablaPosiciones[i][4],
-            calendario.tablaPosiciones[i][5],calendario.tablaPosiciones[i][6],
-            calendario.tablaPosiciones[i][7],calendario.tablaPosiciones[i][8],});         
-        }
-        tblPosiciones.setModel(dtmTablaPosiciones);
-        
+              
     }
-    
-    public void crearColumnas(){
-        dtmTablaPosiciones.addColumn("Club");
-        dtmTablaPosiciones.addColumn("J");
-        dtmTablaPosiciones.addColumn("PG");
-        dtmTablaPosiciones.addColumn("PE");
-        dtmTablaPosiciones.addColumn("PP");
-        dtmTablaPosiciones.addColumn("GF");
-        dtmTablaPosiciones.addColumn("GC");
-        dtmTablaPosiciones.addColumn("DG");
-        dtmTablaPosiciones.addColumn("PTS");       
+    public void llenarTextArea(){
+        txaJonadasYresultados.setText(txaJonadasYresultados.getText() + calendario.fechas + calendario.resultado);  
     }
 
     /**
@@ -57,25 +37,14 @@ public class GUITablaPosiciones extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPosiciones = new javax.swing.JTable();
+        txaJonadasYresultados = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tabla Posiciones");
         setAlwaysOnTop(true);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tblPosiciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblPosiciones);
+        txaJonadasYresultados.setColumns(20);
+        txaJonadasYresultados.setRows(5);
+        jScrollPane1.setViewportView(txaJonadasYresultados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,14 +52,14 @@ public class GUITablaPosiciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -114,26 +83,26 @@ public class GUITablaPosiciones extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUITablaPosiciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUITablaPosiciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUITablaPosiciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUITablaPosiciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUIJornadas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUITablaPosiciones().setVisible(true);
+                new GUIJornadas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPosiciones;
+    private javax.swing.JTextArea txaJonadasYresultados;
     // End of variables declaration//GEN-END:variables
 }

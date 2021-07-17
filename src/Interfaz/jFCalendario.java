@@ -10,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -91,7 +92,7 @@ public class jFCalendario extends javax.swing.JFrame {
         jBJugarTodosPartidos = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAMostrarJornada = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        JBMostrarFechas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -143,8 +144,13 @@ public class jFCalendario extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 360, 280));
 
-        jButton1.setText("MOSTRAR FECHAS");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+        JBMostrarFechas.setText("MOSTRAR FECHAS");
+        JBMostrarFechas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBMostrarFechasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JBMostrarFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
         jLabel1.setBackground(java.awt.SystemColor.textHighlightText);
         jLabel1.setFont(new java.awt.Font("Stencil Std", 1, 48)); // NOI18N
@@ -194,6 +200,12 @@ public class jFCalendario extends javax.swing.JFrame {
         actualizarTablaPosiciones();
     }//GEN-LAST:event_jBJugarTodosPartidosActionPerformed
 
+    private void JBMostrarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMostrarFechasActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, calendarioTorneo.mostrarSiguienteFecha(), "Jornadas",0);
+        
+    }//GEN-LAST:event_JBMostrarFechasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,9 +242,9 @@ public class jFCalendario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBMostrarFechas;
     private javax.swing.JButton jBJugar1Partido;
     private javax.swing.JButton jBJugarTodosPartidos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

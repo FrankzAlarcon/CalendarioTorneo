@@ -15,6 +15,8 @@ public class CalendarioTorneo {
 
     static Jornada jornadas[] = new Jornada[15];
     static String tablaPosiciones[][] = new String[16][9];
+    public static String fechas="";
+    public static String resultado = "";
 
     public static void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
@@ -96,17 +98,12 @@ public class CalendarioTorneo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //opcion para jugar 1 fecha
-        //Opcion para jugar todas las fechas de la primera fase
-        //tabla de posiciones ordenada según los puntos,de estar partidos ganados, perdidos, empatados, goles a favor, en contra y diferencia de goles.
-        //arreglo con los equipos de futbol(16)
-        //Arreglo String con las fechas que se jugaran o con un algoritmo generar los encuentros
         //finalizando la primera fase, el 1er lugar juega contra el 3ro y el 2do contra el 4to
         //de esos 2 encuentros salen las 2 finales
         Scanner teclado = new Scanner(System.in);
 
         Equipo ligaEcuatoriana[] = {new Equipo("Barcelona"), new Equipo("Emelec"), new Equipo("Independiente del Valle"),
-            new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
+            new Equipo("U. Catolica"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
             new Equipo("Aucas"), new Equipo("Manta"), new Equipo("Dep. Cuenta"),
             new Equipo("Tecnico Universitario"), new Equipo("Orense"), new Equipo("Guayaquil City"),
@@ -115,21 +112,25 @@ public class CalendarioTorneo {
         inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
         boolean bandera = true;
         int opcion, jornada = 0;
-        String resultado = "";
+        GUIJornadas fecha = new GUIJornadas();
         while (true) {
             menu();
             opcion = Integer.parseInt(teclado.nextLine());
             switch (opcion) {
                 case 1:
-                    resultado = "";
+                    
+                    resultado = "Resultados \n";
                     for (int i = 0; i < 8; i++) {
                         Partido partido1 = new Partido(ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][1]]);
                         jornadas[jornada].match[i] = partido1;
                         partido1.jugarPartido();
                         resultado += partido1.resultadoPartido() + "\n";
                     }
-                    System.out.println("Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString());
-                    System.out.println("Resultados\n" + resultado + "\n");
+                    
+                    fechas+= "Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString();
+                    resultado += resultado + "\n";
+                    fecha.llenarTextArea();
+                    fecha.setVisible(true);
                     jornada++;
                     break;
                 case 2:
@@ -137,20 +138,21 @@ public class CalendarioTorneo {
                     ordenarMatriz(tablaPosiciones);
                     GUITablaPosiciones tabla = new GUITablaPosiciones();
                     tabla.setVisible(true);
-                    System.out.println(imprimirMatriz(tablaPosiciones));
                     break;
                 case 3:
                     for (int j = jornada; j < 15; j++) {
-                        resultado = "";
+                        resultado = "Resultados\n";
                         for (int i = 0; i < 8; i++) {
                             Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
                             jornadas[j].match[i] = partido1;
                             partido1.jugarPartido();
                             resultado += partido1.resultadoPartido() + "\n";
                         }
-                        System.out.println("Jornada " + (j + 1) + "\n" + jornadas[j].toString());
-                        System.out.println("Resultados\n" + resultado + "\n");
+                        fechas+= "Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString();
+                        resultado += resultado + "\n";
                     }
+                    fecha.llenarTextArea();
+                    fecha.setVisible(true);
                     break;
                 default:
                     bandera = false;

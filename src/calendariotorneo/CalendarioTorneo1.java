@@ -1,6 +1,4 @@
-
 package calendariotorneo;
-
 
 import calendariotorneo.Jornada;
 import calendariotorneo.Equipo;
@@ -9,20 +7,21 @@ import calendariotorneo.Equipo;
  * @author dell
  */
 public class CalendarioTorneo1 {
+
     //ATRIBUTOS
     public Jornada jornadas[];
     public String tablaPosiciones[][];
     public Equipo ligaEcuatoriana[];
-    public int numJornadas=0;
-    public String resultadoFinal="";
+    public int numJornadas = 0;
+    public String resultadoFinal = "";
 
     public CalendarioTorneo1() {
         this.jornadas = new Jornada[15];
         this.tablaPosiciones = new String[16][9];
-        this.ligaEcuatoriana= new Equipo[16];
+        this.ligaEcuatoriana = new Equipo[16];
         llenarEquipos();
         setJornadaVector();
-        inicializarTablaPosiciones();   
+        inicializarTablaPosiciones();
     }
 
     public Jornada[] getJornadas() {
@@ -36,27 +35,28 @@ public class CalendarioTorneo1 {
     public Equipo[] getLigaEcuatoriana() {
         return ligaEcuatoriana;
     }
-    
-    public void llenarEquipos(){
-        this.ligaEcuatoriana[0]=new Equipo("Barcelona");
-        this.ligaEcuatoriana[1]=new Equipo("Emelec");
-        this.ligaEcuatoriana[2]=new Equipo("Independiente del Valle");
-        this.ligaEcuatoriana[3]=new Equipo("U. Catolica");
-        this.ligaEcuatoriana[4]=new Equipo("LDU Quito");
-        this.ligaEcuatoriana[5]=new Equipo("Macará");
-        this.ligaEcuatoriana[6]=new Equipo("Mushuc Runa");
-        this.ligaEcuatoriana[7]=new Equipo("Deflfín");
-        this.ligaEcuatoriana[8]=new Equipo("9 de Octubre");
-        this.ligaEcuatoriana[9]=new Equipo("Aucas");
-        this.ligaEcuatoriana[10]=new Equipo("Manta");
-        this.ligaEcuatoriana[11]=new Equipo("Dep. Cuenta");
-        this.ligaEcuatoriana[12]=new Equipo("Tecnico Universitario");
-        this.ligaEcuatoriana[13]=new Equipo("Orense");
-        this.ligaEcuatoriana[14]=new Equipo("Guayaquil City");
-        this.ligaEcuatoriana[15]=new Equipo("Olmedo");
-       
+
+    public void llenarEquipos() {
+        this.ligaEcuatoriana[0] = new Equipo("Barcelona");
+        this.ligaEcuatoriana[1] = new Equipo("Emelec");
+        this.ligaEcuatoriana[2] = new Equipo("Independiente del Valle");
+        this.ligaEcuatoriana[3] = new Equipo("U. Catolica");
+        this.ligaEcuatoriana[4] = new Equipo("LDU Quito");
+        this.ligaEcuatoriana[5] = new Equipo("Macará");
+        this.ligaEcuatoriana[6] = new Equipo("Mushuc Runa");
+        this.ligaEcuatoriana[7] = new Equipo("Deflfín");
+        this.ligaEcuatoriana[8] = new Equipo("9 de Octubre");
+        this.ligaEcuatoriana[9] = new Equipo("Aucas");
+        this.ligaEcuatoriana[10] = new Equipo("Manta");
+        this.ligaEcuatoriana[11] = new Equipo("Dep. Cuenta");
+        this.ligaEcuatoriana[12] = new Equipo("Tecnico Universitario");
+        this.ligaEcuatoriana[13] = new Equipo("Orense");
+        this.ligaEcuatoriana[14] = new Equipo("Guayaquil City");
+        this.ligaEcuatoriana[15] = new Equipo("Olmedo");
+
     }
 //ESTABLECEMOS LAS JORNADAS
+
     public void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
             this.jornadas[i] = new Jornada();  //Creamo un vector de objetos de tipo Jornada con el contrcutor vacio    
@@ -92,7 +92,7 @@ public class CalendarioTorneo1 {
         int jornada_15[][] = {{13, 6}, {0, 15}, {4, 7}, {9, 1}, {10, 2}, {12, 11}, {14, 3}, {8, 5}};
         this.jornadas[14].orden_Partidos = jornada_15;
     }
-    
+
     //Inicializamos la tabla de posiciones
     public void inicializarTablaPosiciones() {
         for (int i = 0; i < this.tablaPosiciones.length; i++) {
@@ -107,7 +107,7 @@ public class CalendarioTorneo1 {
             this.tablaPosiciones[i][8] = "" + this.ligaEcuatoriana[i].getPuntos();
         }
     }
-      
+
     //Metodo Burbuja, coloca el mayor puntaje al principio 
     public void ordenarMatriz(String matriz[][]) {
         for (int i = 0; i < matriz.length - 1; i++) {
@@ -127,44 +127,51 @@ public class CalendarioTorneo1 {
         }
 
     }
-    
+
+    public String mostrarSiguienteFecha() {
+        String fecha = "*** Jornada *** " + (numJornadas + 1) + "\n";
+        for (int i = 0; i < 8; i++) {
+            fecha += ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]].getNombreEquipo() + " VS "
+                    + ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]].getNombreEquipo() + "\n";
+        }
+        return fecha;
+    }
+
     //Jugar una fecha y regresa los resultado de la misma en String
-    public String jugarUnaFecha(){
-        String resultado="\t*** Jornada "+(numJornadas+1)+" ***\n";
-        resultadoFinal+=resultado;
-        for (int i = 0; i < 8; i++) { 
-                        Partido partido1 = new Partido(ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]],ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]]);
-                        jornadas[numJornadas].match[i] = partido1; //Se juega un partido
-                        partido1.jugarPartido();
-                        resultado += partido1.resultadoPartido() + "\n";
-                        resultadoFinal+=partido1.resultadoPartido()+ "\n";
-                    }
+    public String jugarUnaFecha() {
+        String resultado = "\t*** Jornada " + (numJornadas + 1) + " ***\n";
+        resultadoFinal += resultado;
+        for (int i = 0; i < 8; i++) {
+            Partido partido1 = new Partido(ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]]);
+            jornadas[numJornadas].match[i] = partido1; //Se juega un partido
+            partido1.jugarPartido();
+            resultado += partido1.resultadoPartido() + "\n";
+            resultadoFinal += partido1.resultadoPartido() + "\n";
+        }
         inicializarTablaPosiciones();
         ordenarMatriz(tablaPosiciones);
         numJornadas++;
-       return resultado;
+        return resultado;
     }
-    
-    
+
     //jugat todas as fechas
-    public String jugarTodasFechas(){
-        
+    public String jugarTodasFechas() {
+
         for (int j = numJornadas; j < 15; j++) {
-            resultadoFinal+="\n\t*** Jornada "+(numJornadas+1)+" ***\n";
-           for (int i = 0; i < 8; i++) { 
-                        Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]],ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
-                        jornadas[j].match[i] = partido1; //Se juega un partido
-                        partido1.jugarPartido();
-                        resultadoFinal += partido1.resultadoPartido() + "\n";
-                    }
-        inicializarTablaPosiciones();
-        ordenarMatriz(tablaPosiciones);   
-        numJornadas++;
+            resultadoFinal += "\n\t*** Jornada " + (numJornadas + 1) + " ***\n";
+            for (int i = 0; i < 8; i++) {
+                Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
+                jornadas[j].match[i] = partido1; //Se juega un partido
+                partido1.jugarPartido();
+                resultadoFinal += partido1.resultadoPartido() + "\n";
+            }
+            inicializarTablaPosiciones();
+            ordenarMatriz(tablaPosiciones);
+            numJornadas++;
         }
         return resultadoFinal;
     }
-    
-    
+
     //Imprimir Matriz
     public String imprimirMatriz(String[][] tablaPosiciones) {
         String salida = "";
@@ -196,6 +203,5 @@ public class CalendarioTorneo1 {
 
         }
     }
-
 
 }
