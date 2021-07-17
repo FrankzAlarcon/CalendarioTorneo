@@ -25,6 +25,14 @@ public class CalendarioTorneo {
         //Arreglo String con las fechas que se jugaran o con un algoritmo generar los encuentros
         //finalizando la primera fase, el 1er lugar juega contra el 3ro y el 2do contra el 4to
         //de esos 2 encuentros salen las 2 finales
+        
+        String tablaPosiciones[][] = new String[16][9];
+        Equipo ligaEcuatoriana[]={new Equipo("Barcelona"),
+            new Equipo("Emelec"), new Equipo("Independiente del Valle"),
+            new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
+            new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
+            new Equipo("Aucas"), new Equipo("Manta")};
+                
     }
     
 }
