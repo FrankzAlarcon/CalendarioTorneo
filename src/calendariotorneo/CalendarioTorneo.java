@@ -5,6 +5,7 @@
  */
 package calendariotorneo;
 
+import Interfaz.JFCalendarioTorneo;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import java.util.Scanner;
  */
 public class CalendarioTorneo {
 
-    static Jornada jornadas[] = new Jornada[15];
+    public static Jornada jornadas[] = new Jornada[15];
 
     public static void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
@@ -95,6 +96,8 @@ public class CalendarioTorneo {
             new Equipo("Olmedo")};
         setJornadaVector();
         inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
+        JFCalendarioTorneo jfCalendarioTorneo= new JFCalendarioTorneo(jornadas);
+        jfCalendarioTorneo.setVisible(true);
         boolean bandera = true;
         int opcion, jornada = 0;
         String resultado = "";
