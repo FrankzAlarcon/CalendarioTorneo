@@ -6,6 +6,7 @@
 package calendariotorneo;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /*
     @author Frankz
@@ -13,7 +14,6 @@ import java.util.Arrays;
 public class CalendarioTorneo {
 
     static Jornada jornadas[] = new Jornada[15];
-    
 
     public static void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
@@ -50,7 +50,8 @@ public class CalendarioTorneo {
         int jornada_15[][] = {{13, 6}, {0, 15}, {4, 7}, {9, 1}, {10, 2}, {12, 11}, {14, 3}, {8, 5}};
         jornadas[14].orden_Partidos = jornada_15;
     }
-    public static void inicializarTablaPosiciones(String tablaPosiciones[][], Equipo ligaEcuatoriana[]){
+
+    public static void inicializarTablaPosiciones(String tablaPosiciones[][], Equipo ligaEcuatoriana[]) {
         for (int i = 0; i < tablaPosiciones.length; i++) {
             tablaPosiciones[i][0] = ligaEcuatoriana[i].getNombreEquipo();
             tablaPosiciones[i][1] = "" + ligaEcuatoriana[i].getPartidosJugados();
@@ -61,9 +62,17 @@ public class CalendarioTorneo {
             tablaPosiciones[i][6] = "" + ligaEcuatoriana[i].getGolesEnContra();
             tablaPosiciones[i][7] = "" + ligaEcuatoriana[i].getDiferenciaDeGoles();
             tablaPosiciones[i][8] = "" + ligaEcuatoriana[i].getPuntos();
-        }        
+        }
     }
-    
+
+    public static void menu() {
+        System.out.println("\t Menú de opciones");
+        System.out.println("1.- Jugar una Jornada");
+        System.out.println("2.- Mostrar tabla de posiciones");
+        System.out.println("3.- Jugar todas las jornadas");
+        System.out.println("4.- Salir");
+        System.out.println("Ingrese el número de una opción: ");
+    }
 
     /**
      * @param args the command line arguments
@@ -76,7 +85,8 @@ public class CalendarioTorneo {
         //Arreglo String con las fechas que se jugaran o con un algoritmo generar los encuentros
         //finalizando la primera fase, el 1er lugar juega contra el 3ro y el 2do contra el 4to
         //de esos 2 encuentros salen las 2 finales
-        String tablaPosiciones[][] = new String[16][9];    
+        Scanner teclado = new Scanner(System.in);
+        String tablaPosiciones[][] = new String[16][9];
         Equipo ligaEcuatoriana[] = {new Equipo("Barcelona"), new Equipo("Emelec"), new Equipo("Independiente del Valle"),
             new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
@@ -84,21 +94,49 @@ public class CalendarioTorneo {
             new Equipo("Tecnico Universitario"), new Equipo("Orense"), new Equipo("Guayaquil City"),
             new Equipo("Olmedo")};
         setJornadaVector();
-        for (int j = 0; j < 15; j++) {
-            String resultado = "";
-            for (int i = 0; i < 8; i++) {
-                Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
-                jornadas[j].match[i] = partido1;
-                partido1.jugarPartido();
-                resultado += partido1.resultadoPartido() + "\n";
-            }
-            System.out.println("Jornada " + (j + 1) + "\n" + jornadas[j].toString());
-            System.out.println("Resultados\n" + resultado + "\n");
-        }
-
         inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
-        ordenarMatriz(tablaPosiciones);
-        System.out.println(imprimirMatriz(tablaPosiciones));
+        boolean bandera = true;
+        int opcion, jornada = 0;
+        String resultado = "";
+        while (true) {
+            menu();
+            opcion = Integer.parseInt(teclado.nextLine());
+            switch (opcion) {
+                case 1:
+                    resultado = "";
+                    for (int i = 0; i < 8; i++) {
+                        Partido partido1 = new Partido(ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[jornada].orden_Partidos[i][1]]);
+                        jornadas[jornada].match[i] = partido1;
+                        partido1.jugarPartido();                      
+                        resultado += partido1.resultadoPartido() + "\n";
+                    }   
+                    ordenarMatriz(tablaPosiciones);
+                    System.out.println("Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString());
+                    System.out.println("Resultados\n" + resultado + "\n");       
+                    jornada++;
+                    break;
+                case 2:
+                    System.out.println(imprimirMatriz(tablaPosiciones));
+                    break;
+                case 3:
+                    for (int j = jornada; j < 15; j++) {
+                        resultado = "";
+                        for (int i = 0; i < 8; i++) {
+                            Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
+                            jornadas[j].match[i] = partido1;
+                            partido1.jugarPartido();
+                            resultado += partido1.resultadoPartido() + "\n";
+                        }
+                        System.out.println("Jornada " + (j + 1) + "\n" + jornadas[j].toString());
+                        System.out.println("Resultados\n" + resultado + "\n");
+                    }
+                    break;
+                default:
+                    bandera=false;
+                    break;
+            }
+
+        }
     }
 
     //Metodo Burbuja, coloca el mayor puntaje al principio 
