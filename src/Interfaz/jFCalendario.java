@@ -6,6 +6,7 @@
 package Interfaz;
 
 import calendariotorneo.CalendarioTorneo1;
+import calendariotorneo.Musica;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -24,6 +25,7 @@ public class jFCalendario extends javax.swing.JFrame {
     CalendarioTorneo1 calendarioTorneo;
     DefaultTableModel dtmTablaPosiciones;
     FondoAgencia fondoe = new FondoAgencia();
+    Musica audio = new Musica();
    
     public jFCalendario() {
         this.setContentPane(fondoe);
@@ -35,7 +37,8 @@ public class jFCalendario extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("LIGA PRO");
         this.jBJugar2Fase.setVisible(false);
-        this.jBMostrar2fase.setVisible(false);        
+        this.jBMostrar2fase.setVisible(false);   
+        audio.playMusica();
 
     }
     
