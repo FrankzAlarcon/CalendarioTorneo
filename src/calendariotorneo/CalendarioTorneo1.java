@@ -2,6 +2,8 @@ package calendariotorneo;
 
 import calendariotorneo.Jornada;
 import calendariotorneo.Equipo;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  * @author dell
@@ -12,8 +14,9 @@ public class CalendarioTorneo1 {
     public Jornada jornadas[];
     public String tablaPosiciones[][];
     public Equipo ligaEcuatoriana[];
-    public int numJornadas = 0;
+    public static int numJornadas = 0;
     public String resultadoFinal = "";
+    public Equipo finalistas[] = new Equipo[4];
 
     public CalendarioTorneo1() {
         this.jornadas = new Jornada[15];
@@ -127,15 +130,15 @@ public class CalendarioTorneo1 {
         }
 
     }
-    
+
     //Resetear
-     public void resetear(){
+    public void resetear() {
         this.jornadas = new Jornada[15];
         this.tablaPosiciones = new String[16][9];
-        this.ligaEcuatoriana= new Equipo[16];
+        this.ligaEcuatoriana = new Equipo[16];
         llenarEquipos();
         setJornadaVector();
-        inicializarTablaPosiciones();  
+        inicializarTablaPosiciones();
     }
 
     public String mostrarSiguienteFecha() {
@@ -192,6 +195,52 @@ public class CalendarioTorneo1 {
             salida += "\n";
         }
         return salida;
+    }
+
+    //Encontrar Finalistas
+    public void encontrarFinalistas() {
+        for (int indice = 0; indice < finalistas.length; indice++) {
+            for (int i = 0; i < ligaEcuatoriana.length; i++) {
+                if (ligaEcuatoriana[i].getNombreEquipo().equals(tablaPosiciones[indice][0])) {
+                    finalistas[indice] = ligaEcuatoriana[i];
+                }
+            }
+        }
+    }
+    
+    //Muestra los enfrentamientos del cuadrangular
+    public String mostrarCuadrangular(){
+        return "\t*** Cuadrangular Final *** \n Seminifinales\n" + finalistas[0].getNombreEquipo() + " VS " + finalistas[3].getNombreEquipo() + "\n"
+            + finalistas[1].getNombreEquipo() + " VS " + finalistas[2].getNombreEquipo() + "\n";
+        
+    }
+    
+    public String jugarCruadrangular(int equipo1, int equipo2){
+        String resultado="";
+        Partido semifinal1= new Partido(finalistas[equipo1], finalistas[equipo2]);
+        semifinal1.jugarPartido();
+        if(semifinal1.getGoles1()==semifinal1.getGoles2()){
+            resultado += finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1() + " ( 5 )" + "  -  " + " ( 4 ) " 
+                    + semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
+            JOptionPane.showMessageDialog(null, "Los equipos han empatado. Se juegan penaltis\n"+ resultado);                
+        }else{
+            if(semifinal1.getGoles1() > semifinal1.getGoles2()){
+                resultado +=  finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1()  + "  -  " +  semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
+            }else{
+                resultado +=  finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1()  + "  -  " +  semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
+                intercambioEquipos(equipo2, equipo1, finalistas);
+                System.out.println(Arrays.toString(finalistas));
+                
+            }
+        }  
+        return resultado;
+    }
+    
+    public void intercambioEquipos(int ganador, int perdedor, Equipo finalistas[]){
+        Equipo aux = new Equipo();
+        aux = finalistas[ganador];
+        this.finalistas[ganador] = finalistas[perdedor];
+        this.finalistas[perdedor] = aux;
     }
 
     //Intercambio

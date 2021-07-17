@@ -34,7 +34,8 @@ public class jFCalendario extends javax.swing.JFrame {
         actualizarTablaPosiciones();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("LIGA PRO");
-        
+        this.jBJugar2Fase.setVisible(false);
+        this.jBMostrar2fase.setVisible(false);        
 
     }
     
@@ -96,7 +97,8 @@ public class jFCalendario extends javax.swing.JFrame {
         JBMostrarFechas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jBMostrar2fase = new javax.swing.JButton();
+        jBJugar2Fase = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -116,6 +118,7 @@ public class jFCalendario extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.setEnabled(false);
         jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -135,7 +138,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBJugarTodosPartidosActionPerformed(evt);
             }
         });
-        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jBNuevo.setText("NUEVO");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +146,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jTAMostrarJornada.setEditable(false);
         jTAMostrarJornada.setColumns(20);
@@ -153,7 +156,7 @@ public class jFCalendario extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 360, 280));
 
-        JBMostrarFechas.setText("MOSTRAR FECHAS");
+        JBMostrarFechas.setText("MOSTRAR SIGUIENTE FECHA");
         JBMostrarFechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JBMostrarFechasActionPerformed(evt);
@@ -164,7 +167,7 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel1.setBackground(java.awt.SystemColor.textHighlightText);
         jLabel1.setFont(new java.awt.Font("Stencil Std", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("BARCELONA CAMPEÓN 2022");
+        jLabel1.setText("LIGA ECUATORIANA DE FUTBOL ");
         jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
@@ -174,8 +177,21 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel2.setFocusable(false);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 210, -1, -1));
+        jBMostrar2fase.setText("MOSTRAR SEGUNDA FASE");
+        jBMostrar2fase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBMostrar2faseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBMostrar2fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
+
+        jBJugar2Fase.setText("JUGAR SEGUNDA FASE");
+        jBJugar2Fase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBJugar2FaseActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBJugar2Fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
 
         jMenu1.setText("Menu");
 
@@ -202,16 +218,28 @@ public class jFCalendario extends javax.swing.JFrame {
     private void jBJugar1PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugar1PartidoActionPerformed
         this.jTAMostrarJornada.setText(calendarioTorneo.jugarUnaFecha());
         actualizarTablaPosiciones();
+        if(calendarioTorneo.numJornadas==15){
+            jBJugar1Partido.setEnabled(false);
+            JBMostrarFechas.setEnabled(false);
+            jBMostrar2fase.setVisible(true);
+            jBJugarTodosPartidos.setEnabled(false);
+            calendarioTorneo.numJornadas=0;
+        }
     }//GEN-LAST:event_jBJugar1PartidoActionPerformed
 
     private void jBJugarTodosPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugarTodosPartidosActionPerformed
         this.jTAMostrarJornada.setText(calendarioTorneo.jugarTodasFechas());
         actualizarTablaPosiciones();
-        this.JBMostrarFechas.setVisible(false);
+        this.JBMostrarFechas.setEnabled(false);
+        this.jBMostrar2fase.setVisible(true);
+        this.jBJugar1Partido.setEnabled(false);
+        jBJugarTodosPartidos.setEnabled(false);
+        calendarioTorneo.numJornadas=0;
     }//GEN-LAST:event_jBJugarTodosPartidosActionPerformed
 
     private void JBMostrarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMostrarFechasActionPerformed
         // TODO add your handling code here:
+       
         JOptionPane.showMessageDialog(null, calendarioTorneo.mostrarSiguienteFecha(), "Jornadas",0);
         
     }//GEN-LAST:event_JBMostrarFechasActionPerformed
@@ -220,9 +248,33 @@ public class jFCalendario extends javax.swing.JFrame {
         calendarioTorneo = new CalendarioTorneo1();
         jTAMostrarJornada.setText("");
         this.JBMostrarFechas.setVisible(true);
-        
+        JBMostrarFechas.setEnabled(true);
+        jBJugarTodosPartidos.setEnabled(true);
+        jBMostrar2fase.setEnabled(true);
+        this.jBJugar2Fase.setVisible(false);
+        this.jBMostrar2fase.setVisible(false); 
+        this.jBJugar1Partido.setEnabled(true);
+        jBJugar2Fase.setEnabled(true);
         actualizarTablaPosiciones();
     }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBMostrar2faseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMostrar2faseActionPerformed
+        // TODO add your handling code here:
+        jBJugar2Fase.setVisible(true);
+        jBMostrar2fase.setEnabled(false);
+        calendarioTorneo.encontrarFinalistas();
+        jTAMostrarJornada.setText(calendarioTorneo.mostrarCuadrangular());
+    }//GEN-LAST:event_jBMostrar2faseActionPerformed
+
+    private void jBJugar2FaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugar2FaseActionPerformed
+        // TODO add your handling code here:
+        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nSemifinal 1\n" + calendarioTorneo.jugarCruadrangular(0, 3) + "\n");
+        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nSemifinal 2\n" + calendarioTorneo.jugarCruadrangular(1, 2) + "\n");
+        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nFinal 3ro y 4to lugar\n" + calendarioTorneo.jugarCruadrangular(2, 3) + "\n");
+        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\n***** Gran Final *****\n" + calendarioTorneo.jugarCruadrangular(0, 1) + "\n");        
+        JOptionPane.showMessageDialog(null, "**** El equipo campeón es: " + calendarioTorneo.finalistas[0].getNombreEquipo() + " ****");
+        jBJugar2Fase.setEnabled(false);
+    }//GEN-LAST:event_jBJugar2FaseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,11 +314,12 @@ public class jFCalendario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBMostrarFechas;
     private javax.swing.JButton jBJugar1Partido;
+    private javax.swing.JButton jBJugar2Fase;
     private javax.swing.JButton jBJugarTodosPartidos;
+    private javax.swing.JButton jBMostrar2fase;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
