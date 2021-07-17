@@ -6,6 +6,7 @@
 package Interfaz;
 
 import calendariotorneo.CalendarioTorneo1;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -21,28 +22,36 @@ public class jFCalendario extends javax.swing.JFrame {
         initComponents();
         calendarioTorneo = new CalendarioTorneo1();
         dtmTablaPosiciones = new DefaultTableModel();
-        crearColumnas();
-        for (int i = 0; i < calendarioTorneo.tablaPosiciones.length; i++) {
-            dtmTablaPosiciones.addRow(new Object[]{calendarioTorneo.tablaPosiciones[i][0],
+        crearColumnas(dtmTablaPosiciones);
+        actualizarTablaPosiciones();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+    }
+    
+  
+    public void crearColumnas(DefaultTableModel dtmTabla){
+        dtmTabla.addColumn("Club");
+        dtmTabla.addColumn("PJ");
+        dtmTabla.addColumn("PG");
+        dtmTabla.addColumn("PE");
+        dtmTabla.addColumn("PP");
+        dtmTabla.addColumn("GF");
+        dtmTabla.addColumn("GC");
+        dtmTabla.addColumn("DG");
+        dtmTabla.addColumn("PTS");      
+    }
+    //Actulizar Tabla
+    public void actualizarTablaPosiciones(){
+    DefaultTableModel dtmTablaPosicionesAux = new DefaultTableModel();
+    crearColumnas(dtmTablaPosicionesAux);
+    for (int i = 0; i < calendarioTorneo.tablaPosiciones.length; i++) {
+            dtmTablaPosicionesAux.addRow(new Object[]{calendarioTorneo.tablaPosiciones[i][0],
             calendarioTorneo.tablaPosiciones[i][1],calendarioTorneo.tablaPosiciones[i][2],
             calendarioTorneo.tablaPosiciones[i][3],calendarioTorneo.tablaPosiciones[i][4],
             calendarioTorneo.tablaPosiciones[i][5],calendarioTorneo.tablaPosiciones[i][6],
             calendarioTorneo.tablaPosiciones[i][7],calendarioTorneo.tablaPosiciones[i][8],});        
         }
-        this.jTable1.setModel(dtmTablaPosiciones);
-
-    }
-
-    public void crearColumnas(){
-        dtmTablaPosiciones.addColumn("Club");
-        dtmTablaPosiciones.addColumn("PJ");
-        dtmTablaPosiciones.addColumn("PG");
-        dtmTablaPosiciones.addColumn("PE");
-        dtmTablaPosiciones.addColumn("PP");
-        dtmTablaPosiciones.addColumn("GF");
-        dtmTablaPosiciones.addColumn("GC");
-        dtmTablaPosiciones.addColumn("DG");
-        dtmTablaPosiciones.addColumn("PTS");      
+        this.jTable1.setModel(dtmTablaPosicionesAux);
     }
 
     /**
@@ -121,7 +130,9 @@ public class jFCalendario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jBJugar1PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugar1PartidoActionPerformed
-        
+        calendarioTorneo.jugarUnaFecha();
+        System.out.println(calendarioTorneo.imprimirMatriz(calendarioTorneo.tablaPosiciones));
+        actualizarTablaPosiciones();
     }//GEN-LAST:event_jBJugar1PartidoActionPerformed
 
     /**

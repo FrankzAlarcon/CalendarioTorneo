@@ -13,6 +13,7 @@ public class CalendarioTorneo1 {
     public Jornada jornadas[];
     public String tablaPosiciones[][];
     public Equipo ligaEcuatoriana[];
+    public int numJornadas=0;
 
     public CalendarioTorneo1() {
         this.jornadas = new Jornada[15];
@@ -124,6 +125,20 @@ public class CalendarioTorneo1 {
             }
         }
 
+    }
+    
+    public void jugarUnaFecha(){
+        String resultado="";
+        for (int i = 0; i < 8; i++) { 
+                        Partido partido1 = new Partido(ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]],ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]]);
+                        jornadas[numJornadas].match[i] = partido1; //Se juega un partido
+                        partido1.jugarPartido();
+                        resultado += partido1.resultadoPartido() + "\n";
+                    }
+        inicializarTablaPosiciones();
+        ordenarMatriz(tablaPosiciones);
+        numJornadas++;
+    
     }
     
     
