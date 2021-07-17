@@ -14,6 +14,7 @@ public class CalendarioTorneo1 {
     public String tablaPosiciones[][];
     public Equipo ligaEcuatoriana[];
     public int numJornadas=0;
+    public String resultadoFinal="";
 
     public CalendarioTorneo1() {
         this.jornadas = new Jornada[15];
@@ -127,18 +128,40 @@ public class CalendarioTorneo1 {
 
     }
     
-    public void jugarUnaFecha(){
-        String resultado="";
+    //Jugar una fecha y regresa los resultado de la misma en String
+    public String jugarUnaFecha(){
+        String resultado="\t*** Jornada "+(numJornadas+1)+" ***\n";
+        resultadoFinal+=resultado;
         for (int i = 0; i < 8; i++) { 
                         Partido partido1 = new Partido(ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]],ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]]);
                         jornadas[numJornadas].match[i] = partido1; //Se juega un partido
                         partido1.jugarPartido();
                         resultado += partido1.resultadoPartido() + "\n";
+                        resultadoFinal+=partido1.resultadoPartido()+ "\n";
                     }
         inicializarTablaPosiciones();
         ordenarMatriz(tablaPosiciones);
         numJornadas++;
+       return resultado;
+    }
     
+    
+    //jugat todas as fechas
+    public String jugarTodasFechas(){
+        
+        for (int j = numJornadas; j < 15; j++) {
+            resultadoFinal+="\n\t*** Jornada "+(numJornadas+1)+" ***\n";
+           for (int i = 0; i < 8; i++) { 
+                        Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]],ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
+                        jornadas[j].match[i] = partido1; //Se juega un partido
+                        partido1.jugarPartido();
+                        resultadoFinal += partido1.resultadoPartido() + "\n";
+                    }
+        inicializarTablaPosiciones();
+        ordenarMatriz(tablaPosiciones);   
+        numJornadas++;
+        }
+        return resultadoFinal;
     }
     
     

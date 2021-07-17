@@ -6,7 +6,11 @@
 package Interfaz;
 
 import calendariotorneo.CalendarioTorneo1;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -18,13 +22,18 @@ public class jFCalendario extends javax.swing.JFrame {
 
     CalendarioTorneo1 calendarioTorneo;
     DefaultTableModel dtmTablaPosiciones;
+    FondoAgencia fondoe = new FondoAgencia();
+   
     public jFCalendario() {
+        this.setContentPane(fondoe);
         initComponents();
         calendarioTorneo = new CalendarioTorneo1();
         dtmTablaPosiciones = new DefaultTableModel();
         crearColumnas(dtmTablaPosiciones);
         actualizarTablaPosiciones();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setTitle("LIGA PRO");
+        
 
     }
     
@@ -53,6 +62,19 @@ public class jFCalendario extends javax.swing.JFrame {
         }
         this.jTable1.setModel(dtmTablaPosicionesAux);
     }
+    
+    class FondoAgencia extends JPanel {
+         private Image fondoAgencia;
+        @Override
+        public void paint(Graphics g) {
+        fondoAgencia = new ImageIcon(getClass().getResource("/Imagen/Barcelona.png")).getImage();
+        g.drawImage(fondoAgencia, 0, 0, getWidth(), getHeight(), this);
+        setOpaque(false);
+        super.paint(g);
+        }
+}
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,12 +85,16 @@ public class jFCalendario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTAMostrarJornada = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jBJugar1Partido = new javax.swing.JButton();
         jBJugarTodosPartidos = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTAMostrarJornada = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -78,8 +104,8 @@ public class jFCalendario extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(400, 400));
         setPreferredSize(new java.awt.Dimension(1000, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jTAMostrarJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 520, 270));
 
+        jTable1.setForeground(new java.awt.Color(51, 51, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -88,9 +114,10 @@ public class jFCalendario extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 740, 380));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 780, 290));
 
         jBJugar1Partido.setText("JUGAR UNA FECHA");
         jBJugar1Partido.addActionListener(new java.awt.event.ActionListener() {
@@ -98,14 +125,42 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBJugar1PartidoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBJugar1Partido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
+        getContentPane().add(jBJugar1Partido, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
         jBJugarTodosPartidos.setText("JUGAR TODOS PARTIDOS");
-        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
+        jBJugarTodosPartidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBJugarTodosPartidosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/FondoFutbol.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1460, 650));
+        jTAMostrarJornada.setEditable(false);
+        jTAMostrarJornada.setColumns(20);
+        jTAMostrarJornada.setRows(5);
+        jTAMostrarJornada.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(jTAMostrarJornada);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 360, 280));
+
+        jButton1.setText("MOSTRAR FECHAS");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
+
+        jLabel1.setBackground(java.awt.SystemColor.textHighlightText);
+        jLabel1.setFont(new java.awt.Font("Stencil Std", 1, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("BARCELONA CAMPEÓN 2022");
+        jLabel1.setFocusable(false);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Stencil Std", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("TABLA DE POSICIONES");
+        jLabel2.setFocusable(false);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 210, -1, -1));
 
         jMenu1.setText("Menu");
 
@@ -126,14 +181,18 @@ public class jFCalendario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jBJugar1PartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugar1PartidoActionPerformed
-        calendarioTorneo.jugarUnaFecha();
-        System.out.println(calendarioTorneo.imprimirMatriz(calendarioTorneo.tablaPosiciones));
+        this.jTAMostrarJornada.setText(calendarioTorneo.jugarUnaFecha());
         actualizarTablaPosiciones();
     }//GEN-LAST:event_jBJugar1PartidoActionPerformed
+
+    private void jBJugarTodosPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugarTodosPartidosActionPerformed
+        this.jTAMostrarJornada.setText(calendarioTorneo.jugarTodasFechas());
+        actualizarTablaPosiciones();
+    }//GEN-LAST:event_jBJugarTodosPartidosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,12 +232,16 @@ public class jFCalendario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBJugar1Partido;
     private javax.swing.JButton jBJugarTodosPartidos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jTAMostrarJornada;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTAMostrarJornada;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

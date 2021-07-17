@@ -120,7 +120,7 @@ public class Partido {
     }
     
     public String resultadoPartido(){
-        return this.equipo1.getNombreEquipo() + " " + this.goles1 +  " - " + this.goles2 + " " + this.equipo2.getNombreEquipo();
+        return this.equipo1.getNombreEquipo() + "   " + this.goles1 +  "  -  " + this.goles2 + "   " + this.equipo2.getNombreEquipo();
     }
 
     @Override

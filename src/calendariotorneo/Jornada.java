@@ -30,9 +30,8 @@ public class Jornada {
     @Override
     public String toString() {
         String salida = "";
-        for (int i = 0; i < match.length; i++) {
-            salida+= match[i].toString();
-            
+        for (Partido aux: match){
+            salida+=aux.toString();
         }
         return salida;
     }
