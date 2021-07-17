@@ -21,6 +21,16 @@ public class Equipo {
     private int diferenciaDeGoles;
     private int puntos;
 
+     public Equipo() {
+        this.nombreEquipo = "";
+        this.diferenciaDeGoles=0;
+        this.golesAfavor=0;
+        this.golesEnContra=0;
+        this.partidosEmpatados=0;
+        this.partidosGanados=0;
+        this.partidosPerdidos=0;
+        this.puntos=0;
+    }
     public Equipo(String nombreEquipo) {
         this.nombreEquipo = nombreEquipo;
         this.diferenciaDeGoles=0;
