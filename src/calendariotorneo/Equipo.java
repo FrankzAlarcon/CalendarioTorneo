@@ -105,4 +105,9 @@ public class Equipo {
         this.puntos = puntos;
     }
 
+    @Override
+    public String toString() {
+        return "Equipo{" + "nombreEquipo=" + nombreEquipo + ", partidosJugados=" + partidosJugados + ", partidosGanados=" + partidosGanados + ", partidosEmpatados=" + partidosEmpatados + ", partidosPerdidos=" + partidosPerdidos + ", golesAfavor=" + golesAfavor + ", golesEnContra=" + golesEnContra + ", diferenciaDeGoles=" + diferenciaDeGoles + ", puntos=" + puntos + '}';
+    }
+    
 }

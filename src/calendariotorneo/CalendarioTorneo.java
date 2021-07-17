@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 package calendariotorneo;
-//hholasdas
-/**
- *HOLA QUE TAL FRANKZ
- * HOLAAA
- * SI VALE?
- * JONATHA QUE GUAPO ERES
- * @author Frankz
+
+import java.util.Arrays;
+
+/*
+    @author Frankz
  */
 public class CalendarioTorneo {
 
@@ -27,19 +25,28 @@ public class CalendarioTorneo {
         //de esos 2 encuentros salen las 2 finales
         
         String tablaPosiciones[][] = new String[16][9];
-        Equipo ligaEcuatoriana[]={new Equipo("Barcelona"),
-            new Equipo("Emelec"), new Equipo("Independiente del Valle"),
+        Equipo ligaEcuatoriana[]={new Equipo("Barcelona"), new Equipo("Emelec"), new Equipo("Independiente del Valle"),
             new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
             new Equipo("Aucas"), new Equipo("Manta"), new Equipo("Dep. Cuenta"),
             new Equipo("Tecnico Universitario"), new Equipo("Orense"),new Equipo("Guayaquil City"),
             new Equipo("Olmedo")};
-        for (int i = 0; i < ligaEcuatoriana.length; i++) {
-            
-            
-        }
         
-                
+        for (int i = 0; i < tablaPosiciones.length; i++) {
+            tablaPosiciones[i][0]= ligaEcuatoriana[i].getNombreEquipo();
+            tablaPosiciones[i][1]= "" + ligaEcuatoriana[i].getPartidosJugados();
+            tablaPosiciones[i][2]= "" + ligaEcuatoriana[i].getPartidosGanados();
+            tablaPosiciones[i][3]= "" + ligaEcuatoriana[i].getPartidosEmpatados();
+            tablaPosiciones[i][4]= "" + ligaEcuatoriana[i].getPartidosPerdidos();
+            tablaPosiciones[i][5]= "" + ligaEcuatoriana[i].getGolesAfavor();
+            tablaPosiciones[i][6]= "" + ligaEcuatoriana[i].getGolesEnContra();
+            tablaPosiciones[i][7]= "" + ligaEcuatoriana[i].getDiferenciaDeGoles();
+            tablaPosiciones[i][8]= "" + ligaEcuatoriana[i].getPuntos();          
+        }                        
+    }
+    
+    public void ordenarMatriz(){
+        
     }
     
 }
