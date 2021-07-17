@@ -127,6 +127,16 @@ public class CalendarioTorneo1 {
         }
 
     }
+    
+    //Resetear
+     public void resetear(){
+        this.jornadas = new Jornada[15];
+        this.tablaPosiciones = new String[16][9];
+        this.ligaEcuatoriana= new Equipo[16];
+        llenarEquipos();
+        setJornadaVector();
+        inicializarTablaPosiciones();  
+    }
 
     public String mostrarSiguienteFecha() {
         String fecha = "*** Jornada *** " + (numJornadas + 1) + "\n";

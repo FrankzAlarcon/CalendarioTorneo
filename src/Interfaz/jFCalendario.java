@@ -90,6 +90,7 @@ public class jFCalendario extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jBJugar1Partido = new javax.swing.JButton();
         jBJugarTodosPartidos = new javax.swing.JButton();
+        jBNuevo = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTAMostrarJornada = new javax.swing.JTextArea();
         JBMostrarFechas = new javax.swing.JButton();
@@ -135,6 +136,14 @@ public class jFCalendario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        jBNuevo.setText("NUEVO");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
 
         jTAMostrarJornada.setEditable(false);
         jTAMostrarJornada.setColumns(20);
@@ -198,6 +207,7 @@ public class jFCalendario extends javax.swing.JFrame {
     private void jBJugarTodosPartidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBJugarTodosPartidosActionPerformed
         this.jTAMostrarJornada.setText(calendarioTorneo.jugarTodasFechas());
         actualizarTablaPosiciones();
+        this.JBMostrarFechas.setVisible(false);
     }//GEN-LAST:event_jBJugarTodosPartidosActionPerformed
 
     private void JBMostrarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMostrarFechasActionPerformed
@@ -205,6 +215,14 @@ public class jFCalendario extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, calendarioTorneo.mostrarSiguienteFecha(), "Jornadas",0);
         
     }//GEN-LAST:event_JBMostrarFechasActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        calendarioTorneo = new CalendarioTorneo1();
+        jTAMostrarJornada.setText("");
+        this.JBMostrarFechas.setVisible(true);
+        
+        actualizarTablaPosiciones();
+    }//GEN-LAST:event_jBNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,6 +263,7 @@ public class jFCalendario extends javax.swing.JFrame {
     private javax.swing.JButton JBMostrarFechas;
     private javax.swing.JButton jBJugar1Partido;
     private javax.swing.JButton jBJugarTodosPartidos;
+    private javax.swing.JButton jBNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
