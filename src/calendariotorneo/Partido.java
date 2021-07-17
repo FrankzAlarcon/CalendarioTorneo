@@ -7,37 +7,31 @@ import java.util.Random;
  * @author dell
  */
 public class Partido {
-    private String equipo1;
-    private String equipo2;
+    private Equipo equipo1;
+    private Equipo equipo2;
     private int goles1,goles2;
 
-    public Partido(String equipo1, String equipo2, int goles1, int goles2) {
+    public Partido(Equipo equipo1, Equipo equipo2) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
-        this.goles1 = goles1;
-        this.goles2 = goles2;
-    }
-    
-     public Partido() {
-        this.equipo1 = "";
-        this.equipo2 = "";
         this.goles1 = 0;
         this.goles2 = 0;
     }
 
-    public String getEquipo1() {
+
+    public Equipo getEquipo1() {
         return equipo1;
     }
 
-    public void setEquipo1(String equipo1) {
+    public void setEquipo1(Equipo equipo1) {
         this.equipo1 = equipo1;
     }
 
-    public String getEquipo2() {
+    public Equipo getEquipo2() {
         return equipo2;
     }
 
-    public void setEquipo2(String equipo2) {
+    public void setEquipo2(Equipo equipo2) {
         this.equipo2 = equipo2;
     }
 
@@ -66,21 +60,40 @@ public class Partido {
         this.goles2= random2.nextInt(max+min)+min;
     }
     
-    public int determinarGanador(){
+    public void determinarResultados(){
         if(this.goles1==this.goles2){
-            return 0; //0 EMPATE
+            //Equipo 1
+            this.equipo1.setPuntos(this.equipo1.getPuntos()+1); //Puntos
+            this.equipo1.setGolesAfavor(this.equipo1.getGolesAfavor()+goles1); //Goles A Favor
+            this.equipo1.setGolesEnContra(this.equipo1.getGolesEnContra()+goles2); // Goles En Contra
+            this.equipo1.setPartidosEmpatados(this.equipo1.getPartidosEmpatados()+1); //Partidos Empatados
+            this.equipo1.setDiferenciaDeGoles(this.equipo1.getGolesAfavor()-this.equipo1.getGolesEnContra()); //Goles en contra
+            this.equipo1.setPartidosJugados(this.equipo1.getPartidosJugados()+1); //Partidos Jugados
+            //Equipo2
+            this.equipo2.setPuntos(this.equipo2.getPuntos()+1);
+            this.equipo2.setGolesAfavor(this.equipo2.getGolesAfavor()+goles2);
+            this.equipo2.setGolesEnContra(this.equipo2.getGolesEnContra()+goles1);
+            this.equipo2.setPartidosEmpatados(this.equipo2.getPartidosEmpatados()+1);
+            this.equipo2.setDiferenciaDeGoles(this.equipo2.getGolesAfavor()-this.equipo2.getGolesEnContra());
+            this.equipo2.setPartidosJugados(this.equipo2.getPartidosJugados()+1);
+            
+           
         }else{
             if(this.goles1>goles2){
-                return 1;
+                
             }else{
-                return 2;
+               
             }
         }
     }
     
-    public void jugarPartido(String equipo1, String equipo2){
+    public void jugarPartido(){
         generarResultado();
-        
+       
+       
+            
+        }
     }
     
-}
+    
+
