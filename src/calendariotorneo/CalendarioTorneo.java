@@ -6,7 +6,10 @@
 package calendariotorneo;
 //hholasdas
 /**
- *
+ *HOLA QUE TAL FRANKZ
+ * HOLAAA
+ * SI VALE?
+ * JONATHA QUE GUAPO ERES
  * @author Frankz
  */
 public class CalendarioTorneo {
