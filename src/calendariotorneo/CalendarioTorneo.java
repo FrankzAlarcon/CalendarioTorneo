@@ -109,13 +109,14 @@ public class CalendarioTorneo {
                         jornadas[jornada].match[i] = partido1;
                         partido1.jugarPartido();                      
                         resultado += partido1.resultadoPartido() + "\n";
-                    }   
+                    }                       
                     ordenarMatriz(tablaPosiciones);
                     System.out.println("Jornada " + (jornada + 1) + "\n" + jornadas[jornada].toString());
                     System.out.println("Resultados\n" + resultado + "\n");       
                     jornada++;
                     break;
                 case 2:
+                    inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
                     System.out.println(imprimirMatriz(tablaPosiciones));
                     break;
                 case 3:
