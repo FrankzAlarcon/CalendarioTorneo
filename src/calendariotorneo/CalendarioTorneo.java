@@ -13,10 +13,11 @@ import java.util.Arrays;
 public class CalendarioTorneo {
 
     static Jornada jornadas[] = new Jornada[15];
+    
 
     public static void setJornadaVector() {
         for (int i = 0; i < jornadas.length; i++) {
-            jornadas[i]=new Jornada();  //Creamo un vector de objetos de tipo Jornada     
+            jornadas[i] = new Jornada();  //Creamo un vector de objetos de tipo Jornada     
         }
         int jornada_1[][] = {{0, 1}, {2, 3}, {4, 5}, {6, 7}, {8, 9}, {10, 11}, {12, 13}, {14, 15}};
         jornadas[0].orden_Partidos = jornada_1;
@@ -49,6 +50,20 @@ public class CalendarioTorneo {
         int jornada_15[][] = {{13, 6}, {0, 15}, {4, 7}, {9, 1}, {10, 2}, {12, 11}, {14, 3}, {8, 5}};
         jornadas[14].orden_Partidos = jornada_15;
     }
+    public static void inicializarTablaPosiciones(String tablaPosiciones[][], Equipo ligaEcuatoriana[]){
+        for (int i = 0; i < tablaPosiciones.length; i++) {
+            tablaPosiciones[i][0] = ligaEcuatoriana[i].getNombreEquipo();
+            tablaPosiciones[i][1] = "" + ligaEcuatoriana[i].getPartidosJugados();
+            tablaPosiciones[i][2] = "" + ligaEcuatoriana[i].getPartidosGanados();
+            tablaPosiciones[i][3] = "" + ligaEcuatoriana[i].getPartidosEmpatados();
+            tablaPosiciones[i][4] = "" + ligaEcuatoriana[i].getPartidosPerdidos();
+            tablaPosiciones[i][5] = "" + ligaEcuatoriana[i].getGolesAfavor();
+            tablaPosiciones[i][6] = "" + ligaEcuatoriana[i].getGolesEnContra();
+            tablaPosiciones[i][7] = "" + ligaEcuatoriana[i].getDiferenciaDeGoles();
+            tablaPosiciones[i][8] = "" + ligaEcuatoriana[i].getPuntos();
+        }        
+    }
+    
 
     /**
      * @param args the command line arguments
@@ -61,44 +76,27 @@ public class CalendarioTorneo {
         //Arreglo String con las fechas que se jugaran o con un algoritmo generar los encuentros
         //finalizando la primera fase, el 1er lugar juega contra el 3ro y el 2do contra el 4to
         //de esos 2 encuentros salen las 2 finales
-
-        String tablaPosiciones[][] = new String[16][9];
+        String tablaPosiciones[][] = new String[16][9];    
         Equipo ligaEcuatoriana[] = {new Equipo("Barcelona"), new Equipo("Emelec"), new Equipo("Independiente del Valle"),
             new Equipo("U. Catolico"), new Equipo("LDU Quito"), new Equipo("Macará"),
             new Equipo("Mushuc Runa"), new Equipo("Deflfín"), new Equipo("9 de Octubre"),
             new Equipo("Aucas"), new Equipo("Manta"), new Equipo("Dep. Cuenta"),
             new Equipo("Tecnico Universitario"), new Equipo("Orense"), new Equipo("Guayaquil City"),
             new Equipo("Olmedo")};
-
-          
-        
         setJornadaVector();
-        
-        for(int j=0; j<15;j++){
-            String resultado="";
+        for (int j = 0; j < 15; j++) {
+            String resultado = "";
             for (int i = 0; i < 8; i++) {
                 Partido partido1 = new Partido(ligaEcuatoriana[jornadas[j].orden_Partidos[i][0]], ligaEcuatoriana[jornadas[j].orden_Partidos[i][1]]);
                 jornadas[j].match[i] = partido1;
                 partido1.jugarPartido();
-                resultado += partido1.resultadoPartido()+"\n";
+                resultado += partido1.resultadoPartido() + "\n";
             }
-            System.out.println("Jornada "+(j+1)+"\n"+jornadas[j].toString());
-            System.out.println("Resultados\n"+resultado+"\n");
+            System.out.println("Jornada " + (j + 1) + "\n" + jornadas[j].toString());
+            System.out.println("Resultados\n" + resultado + "\n");
         }
-        
-        
-        for (int i = 0; i < tablaPosiciones.length; i++) {
-            tablaPosiciones[i][0] = ligaEcuatoriana[i].getNombreEquipo();
-            tablaPosiciones[i][1] = "" + ligaEcuatoriana[i].getPartidosJugados();
-            tablaPosiciones[i][2] = "" + ligaEcuatoriana[i].getPartidosGanados();
-            tablaPosiciones[i][3] = "" + ligaEcuatoriana[i].getPartidosEmpatados();
-            tablaPosiciones[i][4] = "" + ligaEcuatoriana[i].getPartidosPerdidos();
-            tablaPosiciones[i][5] = "" + ligaEcuatoriana[i].getGolesAfavor();
-            tablaPosiciones[i][6] = "" + ligaEcuatoriana[i].getGolesEnContra();
-            tablaPosiciones[i][7] = "" + ligaEcuatoriana[i].getDiferenciaDeGoles();
-            tablaPosiciones[i][8] = "" + ligaEcuatoriana[i].getPuntos();
-        }
-        
+
+        inicializarTablaPosiciones(tablaPosiciones, ligaEcuatoriana);
         ordenarMatriz(tablaPosiciones);
         System.out.println(imprimirMatriz(tablaPosiciones));
     }
@@ -114,7 +112,7 @@ public class CalendarioTorneo {
                     }
                 } else {
                     if (Integer.parseInt(matriz[i][8]) < Integer.parseInt(matriz[j][8])) {
-                        
+
                         intercambio(i, j, matriz);
                     }
                 }
@@ -122,18 +120,18 @@ public class CalendarioTorneo {
         }
 
     }
-    
-    public static String imprimirMatriz(String[][] tablaPosiciones){
-        String salida ="";
+
+    public static String imprimirMatriz(String[][] tablaPosiciones) {
+        String salida = "";
         for (int i = 0; i < tablaPosiciones.length; i++) {
             for (int j = 0; j < tablaPosiciones[i].length; j++) {
-                salida+= tablaPosiciones[i][j]+"  ";  
+                salida += tablaPosiciones[i][j] + "  ";
             }
-            salida+="\n";
+            salida += "\n";
         }
         return salida;
     }
-    
+
     public static void intercambio(int mayor, int menor, String matriz[][]) {
         String aux[] = new String[9];
         for (int i = 0; i < aux.length; i++) {
@@ -144,12 +142,12 @@ public class CalendarioTorneo {
         for (int i = 0; i < aux.length; i++) {
             //pongo el menor en el mayor
             matriz[mayor][i] = matriz[menor][i];
-            
+
         }
         for (int i = 0; i < aux.length; i++) {
             //pongo en el menor el aux
             matriz[menor][i] = aux[i];
- 
+
         }
     }
 
