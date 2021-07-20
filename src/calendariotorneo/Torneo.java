@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 /**
  * @author dell
  */
-public class CalendarioTorneo1 {
+public class Torneo {
 
     //ATRIBUTOS
     public Jornada jornadas[];
@@ -18,12 +18,12 @@ public class CalendarioTorneo1 {
     public String resultadoFinal = "";
     public Equipo finalistas[] = new Equipo[4];
 
-    public CalendarioTorneo1() {
+    public Torneo() {
         this.jornadas = new Jornada[15];
         this.tablaPosiciones = new String[16][9];
         this.ligaEcuatoriana = new Equipo[16];
         llenarEquipos();
-        setJornadaVector();
+        establecerJornadas();
         inicializarTablaPosiciones();
     }
 
@@ -60,7 +60,7 @@ public class CalendarioTorneo1 {
     }
 //ESTABLECEMOS LAS JORNADAS
 
-    public void setJornadaVector() {
+    public void establecerJornadas() {
         for (int i = 0; i < jornadas.length; i++) {
             this.jornadas[i] = new Jornada();  //Creamo un vector de objetos de tipo Jornada con el contrcutor vacio    
         }
@@ -112,7 +112,7 @@ public class CalendarioTorneo1 {
     }
 
     //Metodo Burbuja, coloca el mayor puntaje al principio 
-    public void ordenarMatriz(String matriz[][]) {
+    public void ordenarTablaPosiciones(String matriz[][]) {
         for (int i = 0; i < matriz.length - 1; i++) {
             for (int j = i + 1; j < matriz.length; j++) {
                 if (Integer.parseInt(matriz[i][8]) == Integer.parseInt(matriz[j][8])) {
@@ -137,7 +137,7 @@ public class CalendarioTorneo1 {
         this.tablaPosiciones = new String[16][9];
         this.ligaEcuatoriana = new Equipo[16];
         llenarEquipos();
-        setJornadaVector();
+        establecerJornadas();
         inicializarTablaPosiciones();
     }
 
@@ -162,7 +162,7 @@ public class CalendarioTorneo1 {
             resultadoFinal += partido1.resultadoPartido() + "\n";
         }
         inicializarTablaPosiciones();
-        ordenarMatriz(tablaPosiciones);
+        ordenarTablaPosiciones(tablaPosiciones);
         numJornadas++;
         return resultado;
     }
@@ -179,7 +179,7 @@ public class CalendarioTorneo1 {
                 resultadoFinal += partido1.resultadoPartido() + "\n";
             }
             inicializarTablaPosiciones();
-            ordenarMatriz(tablaPosiciones);
+            ordenarTablaPosiciones(tablaPosiciones);
             numJornadas++;
         }
         return resultadoFinal;

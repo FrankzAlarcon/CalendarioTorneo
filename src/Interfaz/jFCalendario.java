@@ -5,7 +5,7 @@
  */
 package Interfaz;
 
-import calendariotorneo.CalendarioTorneo1;
+import calendariotorneo.Torneo;
 import calendariotorneo.Musica;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class jFCalendario extends javax.swing.JFrame {
 
-    CalendarioTorneo1 calendarioTorneo;
+    Torneo calendarioTorneo;
     DefaultTableModel dtmTablaPosiciones;
     FondoAgencia fondoe = new FondoAgencia();
     Musica audio = new Musica();
@@ -30,7 +30,7 @@ public class jFCalendario extends javax.swing.JFrame {
     public jFCalendario() {
         this.setContentPane(fondoe);
         initComponents();
-        calendarioTorneo = new CalendarioTorneo1();
+        calendarioTorneo = new Torneo();
         dtmTablaPosiciones = new DefaultTableModel();
         crearColumnas(dtmTablaPosiciones);
         actualizarTablaPosiciones();
@@ -248,7 +248,7 @@ public class jFCalendario extends javax.swing.JFrame {
     }//GEN-LAST:event_JBMostrarFechasActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
-        calendarioTorneo = new CalendarioTorneo1();
+        calendarioTorneo = new Torneo();
         jTAMostrarJornada.setText("");
         this.JBMostrarFechas.setVisible(true);
         JBMostrarFechas.setEnabled(true);
