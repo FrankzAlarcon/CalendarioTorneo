@@ -72,7 +72,7 @@ public class jFCalendario extends javax.swing.JFrame {
          private Image fondoAgencia;
         @Override
         public void paint(Graphics g) {
-        fondoAgencia = new ImageIcon(getClass().getResource("/Imagen/Barcelona.png")).getImage();
+        fondoAgencia = new ImageIcon(getClass().getResource("/Imagen/FondoFutbol.jpg")).getImage();
         g.drawImage(fondoAgencia, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         super.paint(g);
@@ -169,16 +169,16 @@ public class jFCalendario extends javax.swing.JFrame {
 
         jLabel1.setBackground(java.awt.SystemColor.textHighlightText);
         jLabel1.setFont(new java.awt.Font("Stencil Std", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("LIGA ECUATORIANA DE FUTBOL ");
         jLabel1.setFocusable(false);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Stencil Std", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Stencil Std", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 0));
         jLabel2.setText("TABLA DE POSICIONES");
         jLabel2.setFocusable(false);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, -1, -1));
 
         jBMostrar2fase.setText("MOSTRAR SEGUNDA FASE");
         jBMostrar2fase.addActionListener(new java.awt.event.ActionListener() {
