@@ -54,7 +54,7 @@ public class Torneo {
         this.ligaEcuatoriana[4] = new Equipo("LDU Quito");
         this.ligaEcuatoriana[5] = new Equipo("Macará");
         this.ligaEcuatoriana[6] = new Equipo("Mushuc Runa");
-        this.ligaEcuatoriana[7] = new Equipo("Deflfín");
+        this.ligaEcuatoriana[7] = new Equipo("Delfín");
         this.ligaEcuatoriana[8] = new Equipo("9 de Octubre");
         this.ligaEcuatoriana[9] = new Equipo("Aucas");
         this.ligaEcuatoriana[10] = new Equipo("Manta");
