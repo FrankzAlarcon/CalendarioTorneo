@@ -292,7 +292,7 @@ public class Torneo {
     }
 
     public String mostrarSiguienteFecha() {
-        String fecha = "*** Jornada *** " + (numJornadas + 1) + "\n";
+        String fecha = "*** Jornada " + (numJornadas + 1) + "***\n";
         for (int i = 0; i < 8; i++) {
             fecha += ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][0]].getNombreEquipo() + " VS "
                     + ligaEcuatoriana[jornadas[numJornadas].orden_Partidos[i][1]].getNombreEquipo() + "\n";
