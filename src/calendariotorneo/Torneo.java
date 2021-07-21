@@ -222,29 +222,40 @@ public class Torneo {
     
     public String jugarCruadrangular(int equipo1, int equipo2){
         String resultado="";
+        //Se crea un partido
         Partido semifinal1= new Partido(finalistas[equipo1], finalistas[equipo2]);
         semifinal1.jugarPartido();
         if(semifinal1.getGoles1()==semifinal1.getGoles2()){
+            //Si empatan se dará por ganador al local por un marcador 5-4 en penales
             resultado += finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1() + " ( 5 )" + "  -  " + " ( 4 ) " 
                     + semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
+            //Se mostrara un mensaje con el resultado
             JOptionPane.showMessageDialog(null, "Los equipos han empatado. Se juegan penaltis\n"+ resultado);                
         }else{
             if(semifinal1.getGoles1() > semifinal1.getGoles2()){
+                //Si gana un equipo local, solo se guarda el string del resultado
                 resultado +=  finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1()  + "  -  " +  semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
             }else{
+                //Si gana un equipo visitante, se guarda el string del resultado
                 resultado +=  finalistas[equipo1].getNombreEquipo() + "  " + semifinal1.getGoles1()  + "  -  " +  semifinal1.getGoles2() + "  " + finalistas[equipo2].getNombreEquipo();
-                intercambioEquipos(equipo2, equipo1, finalistas);
-                System.out.println(Arrays.toString(finalistas));
-                
+                //Ademas, se intercambian las posiciones de los equipos, para posteriormente jugar la gran final
+                intercambioEquipos(equipo2, equipo1, finalistas);             
             }
         }  
         return resultado;
     }
     
+    //funcion intercambiar equipos
     public void intercambioEquipos(int ganador, int perdedor, Equipo finalistas[]){
+        //Similar al intercambio de un método burbuja, pero adaptado para intercambiar
+        //de posiciones Equipos
+        //Se crea un auxiliar
         Equipo aux = new Equipo();
+        //Se guarda en auxiliar al locar
         aux = finalistas[ganador];
+        //Se reemplaza en el local el visitante
         this.finalistas[ganador] = finalistas[perdedor];
+        //Se guarda en el visitante al local
         this.finalistas[perdedor] = aux;
     }
 
@@ -270,6 +281,8 @@ public class Torneo {
     }
     //Resetear
     public void resetear() {
+        //Vuelve inicializar en 0 todas las 
+        //estructuras utilizadas
         this.jornadas = new Jornada[15];
         this.tablaPosiciones = new String[16][9];
         this.ligaEcuatoriana = new Equipo[16];
