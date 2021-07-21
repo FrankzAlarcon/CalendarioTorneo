@@ -5,9 +5,11 @@
  */
 package Interfaz;
 
+import calendariotorneo.Musica;
 import calendariotorneo.Torneo;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ public class jFCalendario extends javax.swing.JFrame {
     Torneo calendarioTorneo;
     DefaultTableModel dtmTablaPosiciones;
     FondoAgencia fondoe = new FondoAgencia();
+    Musica musica = new Musica();
 
     public jFCalendario() {
         this.setContentPane(fondoe);
@@ -36,7 +39,7 @@ public class jFCalendario extends javax.swing.JFrame {
         this.setTitle("LIGA PRO");
         this.jBJugar2Fase.setVisible(false);
         this.jBMostrar2fase.setVisible(false);   
-
+        //musica.playMusica();
     }
     
   
@@ -99,6 +102,9 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jBMostrar2fase = new javax.swing.JButton();
         jBJugar2Fase = new javax.swing.JButton();
+        iconoLiga = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -169,12 +175,15 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("LIGA ECUATORIANA DE FUTBOL ");
         jLabel1.setFocusable(false);
+        jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Stencil Std", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 102, 0));
         jLabel2.setText("TABLA DE POSICIONES");
         jLabel2.setFocusable(false);
+        jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, -1, -1));
 
         jBMostrar2fase.setText("MOSTRAR SEGUNDA FASE");
@@ -192,6 +201,18 @@ public class jFCalendario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jBJugar2Fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 180, -1));
+
+        iconoLiga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/LigaPro2.png"))); // NOI18N
+        iconoLiga.setMaximumSize(new java.awt.Dimension(100, 100));
+        iconoLiga.setMinimumSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(iconoLiga, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 130, 130));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Frankz Alarcón, Jonathan Amagua, Christian Pazmiño   ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/epn.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
 
         jMenu1.setText("Menu");
 
@@ -271,8 +292,9 @@ public class jFCalendario extends javax.swing.JFrame {
         jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nSemifinal 1\n" + calendarioTorneo.jugarCruadrangular(0, 3) + "\n");
         jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nSemifinal 2\n" + calendarioTorneo.jugarCruadrangular(1, 2) + "\n");
         jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\nFinal 3ro y 4to lugar\n" + calendarioTorneo.jugarCruadrangular(2, 3) + "\n");
-        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\n***** Gran Final *****\n" + calendarioTorneo.jugarCruadrangular(0, 1) + "\n");        
-        JOptionPane.showMessageDialog(null, "**** El equipo campeón es: " + calendarioTorneo.finalistas[0].getNombreEquipo() + " ****");
+        jTAMostrarJornada.setText(jTAMostrarJornada.getText() + "\n***** Gran Final *****\n" + calendarioTorneo.jugarCruadrangular(0, 1) + "\n");  
+        Toolkit.getDefaultToolkit().beep(); //Sonido de Campana
+        JOptionPane.showMessageDialog(null, "**** EL EQUIPO CAMPEÓN ES: " + calendarioTorneo.finalistas[0].getNombreEquipo() + " ****");
         jBJugar2Fase.setEnabled(false);
     }//GEN-LAST:event_jBJugar2FaseActionPerformed
 
@@ -313,6 +335,7 @@ public class jFCalendario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBMostrarFechas;
+    private javax.swing.JLabel iconoLiga;
     private javax.swing.JButton jBJugar1Partido;
     private javax.swing.JButton jBJugar2Fase;
     private javax.swing.JButton jBJugarTodosPartidos;
@@ -320,6 +343,8 @@ public class jFCalendario extends javax.swing.JFrame {
     private javax.swing.JButton jBNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

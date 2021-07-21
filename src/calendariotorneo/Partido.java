@@ -6,11 +6,11 @@ import java.util.Random;
  * @author dell
  */
 public class Partido {
-
+    //Atributos
     private Equipo equipo1;
     private Equipo equipo2;
     private int goles1, goles2;
-
+    //Contructor
     public Partido(Equipo equipo1, Equipo equipo2) {
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
@@ -51,6 +51,7 @@ public class Partido {
     }
 
     public void generarResultado() {
+        //Asigan valores randomicos entre 0 y 5 a los atributos goles
         int min = 0, max = 5;
         Random random1 = new Random();
         Random random2 = new Random();
@@ -86,7 +87,6 @@ public class Partido {
                 this.equipo1.setPartidosGanados(this.equipo1.getPartidosGanados()+ 1); //Partidos Empatados
                 this.equipo1.setDiferenciaDeGoles(this.equipo1.getGolesAfavor() - this.equipo1.getGolesEnContra()); //Goles en contra
                 this.equipo1.setPartidosJugados(this.equipo1.getPartidosJugados() + 1); //Partidos Jugados
-                
                 //Equipo 2 pierde
                 this.equipo2.setGolesAfavor(this.equipo2.getGolesAfavor() + goles2); //Goles A Favor
                 this.equipo2.setGolesEnContra(this.equipo2.getGolesEnContra() + goles1); // Goles En Contra
@@ -94,16 +94,14 @@ public class Partido {
                 this.equipo2.setDiferenciaDeGoles(this.equipo2.getGolesAfavor() - this.equipo2.getGolesEnContra()); //Goles en contra
                 this.equipo2.setPartidosJugados(this.equipo2.getPartidosJugados() + 1); //Partidos Jugados                            
             } else {
-                //Si gana el equipo 2
-                
+                //Si gana el equipo 2           
                 //Equipo 2 gana
                 this.equipo2.setPuntos(this.equipo2.getPuntos() + 3); //Puntos
                 this.equipo2.setGolesAfavor(this.equipo2.getGolesAfavor() + goles2); //Goles A Favor
                 this.equipo2.setGolesEnContra(this.equipo2.getGolesEnContra() + goles1); // Goles En Contra
                 this.equipo2.setPartidosGanados(this.equipo2.getPartidosGanados()+ 1); //Partidos Empatados
                 this.equipo2.setDiferenciaDeGoles(this.equipo2.getGolesAfavor() - this.equipo2.getGolesEnContra()); //Goles en contra
-                this.equipo2.setPartidosJugados(this.equipo2.getPartidosJugados() + 1); //Partidos Jugados 
-                
+                this.equipo2.setPartidosJugados(this.equipo2.getPartidosJugados() + 1); //Partidos Jugados             
                 //Equipo 1 pierde
                 this.equipo1.setGolesAfavor(this.equipo1.getGolesAfavor() + goles1); //Goles A Favor
                 this.equipo1.setGolesEnContra(this.equipo1.getGolesEnContra() + goles2); // Goles En Contra
@@ -113,18 +111,21 @@ public class Partido {
             }
         }
     }
-
+    
+    //metodo para jugar un partido 
     public void jugarPartido() {
-        generarResultado();
-        determinarResultados();
+        generarResultado(); //Se genera un resulta aleatorio
+        determinarResultados(); //Se determina que equipo gano o si empataron
     }
     
     public String resultadoPartido(){
+        //Imprime el resultado Equipo 1 4 - 5 Equipo 2
         return this.equipo1.getNombreEquipo() + "   " + this.goles1 +  "  -  " + this.goles2 + "   " + this.equipo2.getNombreEquipo();
     }
 
     @Override
     public String toString() {
+        //Imprime el encuentro entre los equipos
         return "\t"+equipo1.getNombreEquipo() + " VS " + equipo2.getNombreEquipo() + "\n";
     }
     
