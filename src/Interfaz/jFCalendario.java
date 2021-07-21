@@ -39,7 +39,7 @@ public class jFCalendario extends javax.swing.JFrame {
         this.setTitle("LIGA PRO");
         this.jBJugar2Fase.setVisible(false);
         this.jBMostrar2fase.setVisible(false);   
-        //musica.playMusica();
+        musica.playMusica();
     }
     
   
