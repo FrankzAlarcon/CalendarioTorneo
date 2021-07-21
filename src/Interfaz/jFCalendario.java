@@ -207,8 +207,10 @@ public class jFCalendario extends javax.swing.JFrame {
         iconoLiga.setMinimumSize(new java.awt.Dimension(100, 100));
         getContentPane().add(iconoLiga, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 130, 130));
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Frankz Alarcón, Jonathan Amagua, Christian Pazmiño   ");
+        jLabel3.setOpaque(true);
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/epn.png"))); // NOI18N
