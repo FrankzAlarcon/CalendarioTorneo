@@ -72,7 +72,7 @@ public class jFCalendario extends javax.swing.JFrame {
          private Image fondoAgencia;
         @Override
         public void paint(Graphics g) {
-        fondoAgencia = new ImageIcon(getClass().getResource("/Imagen/FondoFutbol.jpg")).getImage();
+        fondoAgencia = new ImageIcon(getClass().getResource("/Imagen/Campo.jpg")).getImage();
         g.drawImage(fondoAgencia, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         super.paint(g);
@@ -259,10 +259,7 @@ public class jFCalendario extends javax.swing.JFrame {
     }//GEN-LAST:event_jBJugarTodosPartidosActionPerformed
 
     private void JBMostrarFechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMostrarFechasActionPerformed
-        // TODO add your handling code here:
-       
         JOptionPane.showMessageDialog(null, calendarioTorneo.mostrarSiguienteFecha(), "Jornadas",0);
-        
     }//GEN-LAST:event_JBMostrarFechasActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
