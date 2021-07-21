@@ -117,7 +117,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombreEquipo=" + nombreEquipo;
+        return  "Equipo:" + nombreEquipo+"\n";
     }  
     
 }

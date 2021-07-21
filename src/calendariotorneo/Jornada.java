@@ -17,16 +17,12 @@ public class Jornada {
         this.match = new Partido[8];
         this.orden_Partidos = new int[8][2];
     }
-
-
     public Partido[] getMatch() {
         return match;
     }
-
     public void setMatch(Partido[] match) {
         this.match = match;
     }
-
     @Override
     public String toString() {
         String salida = "";
@@ -35,5 +31,4 @@ public class Jornada {
         }
         return salida;
     }
-
 }

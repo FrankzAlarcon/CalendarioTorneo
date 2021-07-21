@@ -136,7 +136,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBJugar1PartidoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBJugar1Partido, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 270, -1));
+        getContentPane().add(jBJugar1Partido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 250, -1));
 
         jBJugarTodosPartidos.setText("JUGAR TODOS PARTIDOS");
         jBJugarTodosPartidos.addActionListener(new java.awt.event.ActionListener() {
@@ -144,7 +144,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBJugarTodosPartidosActionPerformed(evt);
             }
         });
-        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 270, -1));
+        getContentPane().add(jBJugarTodosPartidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 550, 250, -1));
 
         jBNuevo.setText("NUEVO");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +152,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 250, -1));
 
         jTAMostrarJornada.setEditable(false);
         jTAMostrarJornada.setColumns(20);
@@ -160,7 +160,7 @@ public class jFCalendario extends javax.swing.JFrame {
         jTAMostrarJornada.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(jTAMostrarJornada);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 360, 280));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 360, 280));
 
         JBMostrarFechas.setText("MOSTRAR SIGUIENTE FECHA");
         JBMostrarFechas.addActionListener(new java.awt.event.ActionListener() {
@@ -168,14 +168,13 @@ public class jFCalendario extends javax.swing.JFrame {
                 JBMostrarFechasActionPerformed(evt);
             }
         });
-        getContentPane().add(JBMostrarFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 270, -1));
+        getContentPane().add(JBMostrarFechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 520, 250, -1));
 
         jLabel1.setBackground(java.awt.SystemColor.textHighlightText);
         jLabel1.setFont(new java.awt.Font("Stencil Std", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("LIGA ECUATORIANA DE FUTBOL ");
         jLabel1.setFocusable(false);
-        jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -183,7 +182,6 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 102, 0));
         jLabel2.setText("TABLA DE POSICIONES");
         jLabel2.setFocusable(false);
-        jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, -1, -1));
 
         jBMostrar2fase.setText("MOSTRAR SEGUNDA FASE");
@@ -192,7 +190,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBMostrar2faseActionPerformed(evt);
             }
         });
-        getContentPane().add(jBMostrar2fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 270, -1));
+        getContentPane().add(jBMostrar2fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 250, -1));
 
         jBJugar2Fase.setText("JUGAR SEGUNDA FASE");
         jBJugar2Fase.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +198,7 @@ public class jFCalendario extends javax.swing.JFrame {
                 jBJugar2FaseActionPerformed(evt);
             }
         });
-        getContentPane().add(jBJugar2Fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 270, -1));
+        getContentPane().add(jBJugar2Fase, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 580, 250, -1));
 
         iconoLiga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/LigaPro2.png"))); // NOI18N
         iconoLiga.setMaximumSize(new java.awt.Dimension(100, 100));
@@ -211,10 +209,10 @@ public class jFCalendario extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Frankz Alarcón, Jonathan Amagua, Christian Pazmiño   ");
         jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/epn.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 550, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jMenu1.setText("Menu");
 
